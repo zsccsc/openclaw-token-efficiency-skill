@@ -72,16 +72,6 @@ One real OpenClaw optimization pass produced results like:
 
 That is the kind of improvement this skill is meant to uncover and validate.
 
-## Publishing checklist
-
-Before sharing publicly:
-- remove private paths
-- remove personal account names
-- remove local auth assumptions
-- avoid embedding secrets or internal infra details
-- keep examples generic and reproducible
-- replace placeholder GitHub links in `SKILL.md`
-
 ## Files
 
 - `SKILL.md` — the reusable skill definition
