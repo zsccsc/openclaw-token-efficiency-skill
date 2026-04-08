@@ -1,7 +1,7 @@
 ---
 name: openclaw-token-efficiency
 description: Audit OpenClaw sessions for prompt bloat and token waste, then recommend low-risk config changes that shrink skill injection, reduce prompt weight, and improve cache reuse.
-homepage: https://github.com/your-org/openclaw-token-efficiency-skill
+homepage: https://github.com/zsccsc/openclaw-token-efficiency-skill
 metadata:
   {
     "openclaw": {

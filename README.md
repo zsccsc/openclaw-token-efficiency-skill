@@ -72,15 +72,6 @@ One real OpenClaw optimization pass produced results like:
 
 That is the kind of improvement this skill is meant to uncover and validate.
 
-## Suggested repo name
-
-A few good options:
-- `openclaw-token-efficiency-skill`
-- `openclaw-prompt-slimming-skill`
-- `openclaw-token-slimming`
-
-My recommendation: **`openclaw-token-efficiency-skill`**
-
 ## Publishing checklist
 
 Before sharing publicly:
