@@ -1,6 +1,6 @@
 # OpenClaw Token Efficiency Skill
 
-A public-safe skill for diagnosing prompt bloat, oversized skill injection, and token waste in OpenClaw.
+A public skill for diagnosing prompt bloat, oversized skill injection, and token waste in OpenClaw.
 
 ## Why this exists
 
@@ -11,21 +11,42 @@ In practice, token waste often comes from:
 - broad skill catalog injection
 - large bootstrap or project-context blocks
 - long-lived direct sessions
-- weak cache reuse
+- poor cache reuse
+- memory designs that load too much detail by default
 
 This skill helps an agent do four things well:
 1. measure the problem,
 2. find the biggest source of waste,
-3. suggest low-risk config changes,
+3. suggest low-risk config and workflow changes,
 4. verify improvements with before/after numbers.
 
-## What it helps with
+## What it emphasizes
 
-Use this when OpenClaw sessions feel:
-- more expensive than expected
-- slow on simple tasks
-- heavy even in fresh chats
-- inconsistent across agents
+This is not just a “reduce tokens” skill. It is also about structure.
+
+Two design ideas matter a lot:
+
+### 1) Layered skills
+
+Not every agent should inherit a giant shared skill set.
+
+A better pattern is:
+- keep `agents.defaults.skills` small
+- give narrow agents their own minimal skill allowlists
+- treat every additional skill as prompt budget
+
+This usually improves both prompt size and cache stability.
+
+### 2) Layered memory
+
+A good memory design should not load full detail into every run.
+
+A practical structure is:
+- **L0**: short index or summary, loaded often
+- **L1**: topic files, loaded on demand
+- **L2**: daily logs or detailed notes, loaded only when relevant
+
+This keeps continuity without turning memory into permanent prompt tax.
 
 ## Recommended metrics
 
@@ -33,7 +54,7 @@ For each comparison, try to capture:
 - **total tokens**
 - **context size**
 - **cache hit rate**
-- **estimated cost** (if available)
+- **estimated cost** if available
 
 Good comparisons:
 - fresh direct session before vs after
@@ -76,8 +97,4 @@ That is the kind of improvement this skill is meant to uncover and validate.
 
 - `SKILL.md` — the reusable skill definition
 - `README.md` — public explanation and usage notes
-- `LICENSE` — MIT by default in this scaffold
-
-## License
-
-This scaffold currently uses MIT.
+- `LICENSE` — MIT
